@@ -39,7 +39,10 @@ use Illuminate\Support\Facades\Route;
 
 
 // ==================== RÔLE 5 — Mia : annuaire et catégories ====================
+use App\Http\Controllers\CategorieController;
 
+Route::get('/categories', [CategorieController::class, 'index']);
+Route::get('/categories/{categorie}/profils', [CategorieController::class, 'profils']);
 
 // ==================== FIN RÔLE 5 ====================
 

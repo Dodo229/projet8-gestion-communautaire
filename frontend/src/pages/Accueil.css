@@ -1,0 +1,49 @@
+.accueil {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.accueil-intro {
+  color: var(--texte-gris);
+  margin-bottom: 2rem;
+}
+
+.accueil-grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.carte-categorie {
+  background: #ffffff;
+  border: 1px solid var(--contour);
+  border-radius: 10px;
+  padding: 1.25rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.carte-categorie:hover {
+  border-color: var(--vert);
+  transform: translateY(-2px);
+}
+
+.carte-categorie h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--vert-clair);
+  color: var(--vert-fonce);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+}
+
+.message-erreur {
+  color: var(--rouge);
+  font-weight: 600;
+}
