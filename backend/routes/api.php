@@ -57,6 +57,9 @@ use Illuminate\Support\Facades\Route;
 
 
 // ==================== RÔLE 8 — Eustache : comptes et protection des données ====================
+use App\Http\Controllers\JournalController;
 
+// TEMPORAIRE : à protéger avec ->middleware(['auth:sanctum', 'admin']) quand le middleware d'Oremus est sur main
+Route::get('/admin/journal', [JournalController::class, 'index']);
 
 // ==================== FIN RÔLE 8 ====================
