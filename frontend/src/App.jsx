@@ -7,6 +7,8 @@ import Introuvable from './pages/Introuvable';
 // ===== IMPORTS : chacun ajoute les imports de SES pages sous son nom =====
 // Rôle 2 — Oremus
 // Rôle 3 — Eckson
+import MonProfil from './pages/MonProfil';
+import AdminProfils from './pages/admin/AdminProfils';
 // Rôle 4 — Jean-Pierre
 // Rôle 5 — Mia
 // Rôle 6 — Casimir
@@ -23,6 +25,8 @@ export default function App() {
           <Route path="/connexion" element={<EnConstruction titre="Connexion" />} />
 
           {/* ===== RÔLE 3 — Eckson : /mon-profil, /admin/profils ===== */}
+          <Route path="/mon-profil" element={<MonProfil />} />
+          <Route path="/admin/profils" element={<AdminProfils />} />
 
           {/* ===== RÔLE 4 — Jean-Pierre : /recherche, /profils/:id ===== */}
           <Route path="/recherche" element={<EnConstruction titre="Recherche" />} />

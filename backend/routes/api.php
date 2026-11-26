@@ -26,7 +26,21 @@ use Illuminate\Support\Facades\Route;
 
 
 // ==================== RÔLE 3 — Eckson : profils ====================
+use App\Http\Controllers\ProfilController;
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/mon-profil', [ProfilController::class, 'showMine']);
+    Route::post('/mon-profil', [ProfilController::class, 'store']);
+    Route::put('/mon-profil', [ProfilController::class, 'update']);
+    Route::post('/mon-profil/documents', [ProfilController::class, 'uploadDocument']);
+
+    // Le contrôleur vérifie aussi le rôle admin (en attendant l'alias 'admin' du Rôle 2)
+    Route::prefix('admin')->group(function () {
+        Route::get('/profils', [ProfilController::class, 'adminIndex']);
+        Route::patch('/profils/{id}/valider', [ProfilController::class, 'valider']);
+        Route::patch('/profils/{id}/rejeter', [ProfilController::class, 'rejeter']);
+    });
+});
 
 // ==================== FIN RÔLE 3 ====================
 
