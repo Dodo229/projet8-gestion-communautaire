@@ -62,4 +62,11 @@ use App\Http\Controllers\JournalController;
 // TEMPORAIRE : à protéger avec ->middleware(['auth:sanctum', 'admin']) quand le middleware d'Oremus est sur main
 Route::get('/admin/journal', [JournalController::class, 'index']);
 
+
+use App\Http\Controllers\UserAdminController;
+
+// TEMPORAIRE : à protéger avec ->middleware(['auth:sanctum', 'admin'])
+Route::get('/admin/users', [UserAdminController::class, 'index']);
+
+Route::patch('/admin/users/{id}', [UserAdminController::class, 'update']);
 // ==================== FIN RÔLE 8 ====================
