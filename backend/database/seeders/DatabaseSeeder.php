@@ -2,24 +2,31 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Categorie;
+use App\Models\NiveauEtude;
+use App\Models\Secteur;
 use Illuminate\Database\Seeder;
 
+/**
+ * FOURNI PAR LE MEMBRE 1 : listes de choix, puis profils de démonstration.
+ * Lancé par « php artisan migrate --seed » ou « php artisan db:seed ».
+ */
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        foreach (['Cadres administratifs', 'Cadres techniques', 'Chefs d’entreprise', 'Artisans',
+                  'Commerçants', 'Jeunes entrepreneurs', 'Investisseurs / partenaires'] as $libelle) {
+            Categorie::firstOrCreate(['libelle' => $libelle]);
+        }
+        foreach (['Agriculture', 'Commerce', 'Artisanat', 'Numérique', 'Santé', 'Éducation',
+                  'BTP', 'Transport', 'Services', 'Finance'] as $libelle) {
+            Secteur::firstOrCreate(['libelle' => $libelle]);
+        }
+        foreach (['Sans diplôme', 'BEPC / CAP', 'Baccalauréat', 'Licence', 'Master', 'Doctorat'] as $rang => $libelle) {
+            NiveauEtude::firstOrCreate(['libelle' => $libelle], ['rang' => $rang]);
+        }
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $this->call(DemoSeeder::class);
     }
 }
