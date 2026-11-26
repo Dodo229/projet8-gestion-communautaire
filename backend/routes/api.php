@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\AnnonceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,7 +51,18 @@ use Illuminate\Support\Facades\Route;
 
 
 // ==================== RÔLE 7 — Vernon : communication ====================
+use App\Http\Controllers\AnnonceController;
+use App\Http\Controllers\NewsletterController;
 
+Route::get('/annonces', [AnnonceController::class, 'index']);
+Route::post('/newsletter', [NewsletterController::class, 'store'])
+    ->middleware('throttle:5,1');
+
+Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
+    Route::post('/annonces', [AnnonceController::class, 'store']);
+    Route::put('/annonces/{annonce}', [AnnonceController::class, 'update']);
+    Route::delete('/annonces/{annonce}', [AnnonceController::class, 'destroy']);
+});
 
 // ==================== FIN RÔLE 7 ====================
 
