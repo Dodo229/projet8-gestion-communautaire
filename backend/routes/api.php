@@ -67,6 +67,13 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
 
 
 // ==================== RÔLE 8 — Eustache : comptes et protection des données ====================
+use App\Http\Controllers\JournalController;
+use App\Http\Controllers\UserAdminController;
 
+// DÉSACTIVÉES en attendant le middleware admin d'Oremus.
+// À réactiver avec ->middleware(['auth:sanctum', 'admin']) :
+// Route::get('/admin/journal', [JournalController::class, 'index']);
+// Route::get('/admin/users', [UserAdminController::class, 'index']);
+// Route::patch('/admin/users/{id}', [UserAdminController::class, 'update']);
 
 // ==================== FIN RÔLE 8 ====================
