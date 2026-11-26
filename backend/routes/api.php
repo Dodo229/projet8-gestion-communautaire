@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -54,12 +53,30 @@ Route::get('/categories/{categorie}/profils', [CategorieController::class, 'prof
 
 
 // ==================== RÔLE 7 — Vernon : communication ====================
+use App\Http\Controllers\AnnonceController;
+use App\Http\Controllers\NewsletterController;
 
+Route::get('/annonces', [AnnonceController::class, 'index']);
+Route::post('/newsletter', [NewsletterController::class, 'store'])
+    ->middleware('throttle:5,1');
+
+Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
+    Route::post('/annonces', [AnnonceController::class, 'store']);
+    Route::put('/annonces/{annonce}', [AnnonceController::class, 'update']);
+    Route::delete('/annonces/{annonce}', [AnnonceController::class, 'destroy']);
+});
 
 // ==================== FIN RÔLE 7 ====================
 
 
 // ==================== RÔLE 8 — Eustache : comptes et protection des données ====================
+use App\Http\Controllers\JournalController;
+use App\Http\Controllers\UserAdminController;
 
+// DÉSACTIVÉES en attendant le middleware admin d'Oremus.
+// À réactiver avec ->middleware(['auth:sanctum', 'admin']) :
+// Route::get('/admin/journal', [JournalController::class, 'index']);
+// Route::get('/admin/users', [UserAdminController::class, 'index']);
+// Route::patch('/admin/users/{id}', [UserAdminController::class, 'update']);
 
 // ==================== FIN RÔLE 8 ====================
