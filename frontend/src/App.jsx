@@ -9,6 +9,9 @@ import Introuvable from './pages/Introuvable';
 // Rôle 3 — Eckson
 // Rôle 4 — Jean-Pierre
 // Rôle 5 — Mia
+import Accueil from './pages/Accueil';
+import AnnuaireCategorie from './pages/AnnuaireCategorie';
+import AdminCategories from './pages/admin/AdminCategories';
 // Rôle 6 — Casimir
 // Rôle 7 — Vernon
 // Rôle 8 — Eustache
@@ -28,8 +31,11 @@ export default function App() {
           <Route path="/recherche" element={<EnConstruction titre="Recherche" />} />
 
           {/* ===== RÔLE 5 — Mia : /, /annuaire, /admin/categories ===== */}
-          <Route path="/" element={<EnConstruction titre="Accueil" />} />
+          <Route path="/" element={<Accueil />
+           } />
           <Route path="/annuaire" element={<EnConstruction titre="Annuaire" />} />
+          <Route path="/categories/:id" element={<AnnuaireCategorie />} />
+          <Route path="/admin/categories" element={<AdminCategories />} />
 
           {/* ===== RÔLE 6 — Casimir : /admin (tableau de bord) ===== */}
           <Route path="/admin" element={<EnConstruction titre="Tableau de bord" />} />
