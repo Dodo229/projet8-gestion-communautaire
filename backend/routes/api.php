@@ -20,7 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 
 // ==================== RÔLE 2 — Oremus : inscription et connexion ====================
+use App\Http\Controllers\AuthController;
 
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
 
 // ==================== FIN RÔLE 2 ====================
 
