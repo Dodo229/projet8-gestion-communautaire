@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import "./Accueil.css";
-
-const API_URL = "http://localhost:8000/api";
+import api from "../api";
+import Carte from "../components/Carte";
+import Badge from "../components/Badge";
 
 export default function Accueil() {
   const [categories, setCategories] = useState([]);
@@ -9,12 +10,9 @@ export default function Accueil() {
   const [erreur, setErreur] = useState("");
 
   useEffect(() => {
-    fetch(`${API_URL}/categories`, { headers: { Accept: "application/json" } })
-      .then((reponse) => {
-        if (!reponse.ok) throw new Error("Erreur " + reponse.status);
-        return reponse.json();
-      })
-      .then((donnees) => setCategories(donnees))
+    api
+      .get("/categories")
+      .then((reponse) => setCategories(reponse.data))
       .catch(() => setErreur("Impossible de charger les catégories."))
       .finally(() => setChargement(false));
   }, []);
@@ -32,12 +30,12 @@ export default function Accueil() {
 
       <div className="accueil-grille">
         {categories.map((c) => (
-          <div key={c.id} className="carte-categorie">
+          <Carte key={c.id} className="carte-categorie">
             <h2>{c.nom}</h2>
-           <span className="badge">
-  {c.profils_count} profil{c.profils_count > 1 ? "s" : ""}
-</span>
-          </div>
+            <Badge>
+              {c.profils_count} profil{c.profils_count > 1 ? "s" : ""}
+            </Badge>
+          </Carte>
         ))}
       </div>
     </main>
