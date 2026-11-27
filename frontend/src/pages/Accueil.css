@@ -47,3 +47,8 @@
   color: var(--rouge);
   font-weight: 600;
 }
+.admin-cat-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}

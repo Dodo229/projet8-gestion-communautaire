@@ -115,7 +115,7 @@ export default function AdminCategories() {
                 <Badge>
                   {c.profils_count} profil{c.profils_count > 1 ? "s" : ""}
                 </Badge>
-                <div>
+               <div className="admin-cat-actions">
                   <button
                     onClick={() => {
                       effacerMessages();
