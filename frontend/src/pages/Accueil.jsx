@@ -3,6 +3,7 @@ import "./Accueil.css";
 import api from "../api";
 import Carte from "../components/Carte";
 import Badge from "../components/Badge";
+import { Link } from "react-router-dom";
 
 export default function Accueil() {
   const [categories, setCategories] = useState([]);
@@ -31,7 +32,7 @@ export default function Accueil() {
       <div className="accueil-grille">
         {categories.map((c) => (
           <Carte key={c.id} className="carte-categorie">
-            <h2>{c.nom}</h2>
+            <h2><Link to={`/categories/${c.id}`}>{c.nom}</Link></h2>
             <Badge>
               {c.profils_count} profil{c.profils_count > 1 ? "s" : ""}
             </Badge>
