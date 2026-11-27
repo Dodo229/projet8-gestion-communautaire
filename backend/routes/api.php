@@ -42,7 +42,9 @@ use App\Http\Controllers\CategorieController;
 
 Route::get('/categories', [CategorieController::class, 'index']);
 Route::get('/categories/{categorie}/profils', [CategorieController::class, 'profils']);
-
+Route::post('/admin/categories', [CategorieController::class, 'store'])->middleware(['auth:sanctum', 'admin']);
+Route::put('/admin/categories/{categorie}', [CategorieController::class, 'update'])->middleware(['auth:sanctum', 'admin']);
+Route::delete('/admin/categories/{categorie}', [CategorieController::class, 'destroy'])->middleware(['auth:sanctum', 'admin']);
 // ==================== FIN RÔLE 5 ====================
 
 
