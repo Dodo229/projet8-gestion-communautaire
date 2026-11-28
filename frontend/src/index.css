@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
   Feuille de style globale. Tailwind fournit les classes utilitaires (p-4, flex...).
   Ci-dessous : quelques classes réutilisables pour garder une interface cohérente
@@ -43,4 +44,49 @@
   .tableau { @apply w-full text-left text-sm; }
   .tableau th { @apply border-b border-slate-200 bg-slate-50 px-3 py-2 font-semibold text-slate-600; }
   .tableau td { @apply border-b border-slate-100 px-3 py-2 align-top; }
+=======
+/* CHARTE GRAPHIQUE COMMUNE (Tailwind v4) : ne pas inventer d'autres couleurs.
+   Chaque couleur devient une classe : --color-primaire -> bg-primaire, text-primaire, border-primaire... */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-primaire: #0f6b4f;        /* boutons, titres, menu */
+  --color-primaire-fonce: #0a4f3a;  /* survol des boutons */
+  --color-primaire-clair: #e3f1ec;  /* fonds de badges, zones légères */
+  --color-accent: #e8b004;          /* mise en avant, alertes douces */
+  --color-danger: #c0392b;          /* erreurs, suppression */
+  --color-fond: #faf7f0;            /* fond de page */
+  --color-texte: #1c2321;           /* texte */
+  --color-gris: #5f6b66;            /* texte gris */
+  --color-contour: #e4ded1;         /* contours */
+  --font-titre: "Sora", sans-serif;
+  --font-sans: "Source Sans 3", system-ui, sans-serif;
+  --radius-carte: 0.75rem;
+}
+
+body {
+  background-color: var(--color-fond);
+  color: var(--color-texte);
+  font-family: var(--font-sans);
+}
+
+/* Tous les titres utilisent Sora, en vert principal */
+h1, h2, h3 {
+  font-family: var(--font-titre);
+  color: var(--color-primaire);
+}
+
+/* Champ de formulaire réutilisable : <input className="champ" /> */
+.champ {
+  width: 100%;
+  background: white;
+  border: 1px solid var(--color-contour);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+}
+.champ:focus {
+  outline: 2px solid var(--color-primaire);
+  outline-offset: 1px;
+>>>>>>> 6edec79cbe3b77e687be5ee62b629e258bec25c4
 }
