@@ -87,8 +87,6 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
 use App\Http\Controllers\JournalController;
 use App\Http\Controllers\UserAdminController;
 
-// DÉSACTIVÉES en attendant le middleware admin d'Oremus.
-// À réactiver avec ->middleware(['auth:sanctum', 'admin']) :
 
 Route::get('/admin/journal', [JournalController::class, 'index'])
     ->middleware(['auth:sanctum', 'admin']);
@@ -98,5 +96,13 @@ Route::get('/admin/users', [UserAdminController::class, 'index'])
 
 Route::patch('/admin/users/{id}', [UserAdminController::class, 'update'])
     ->middleware(['auth:sanctum', 'admin']);
+
+    use App\Http\Controllers\MonCompteController;
+
+Route::get('/mon-compte/donnees', [MonCompteController::class, 'donnees'])
+    ->middleware('auth:sanctum');
+
+Route::delete('/mon-compte', [MonCompteController::class, 'destroy'])
+    ->middleware('auth:sanctum');
 
 // ==================== FIN RÔLE 8 ====================
