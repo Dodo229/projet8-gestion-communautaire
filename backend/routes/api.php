@@ -49,7 +49,12 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
 // ==================== RÔLE 4 — Jean-Pierre : recherche et consultation ====================
+use App\Http\Controllers\RechercheController;
 
+// Routes publiques : un visiteur peut chercher sans compte (seuls les profils validés sont renvoyés)
+Route::get('/profils', [RechercheController::class, 'index']);
+Route::get('/profils/filtres', [RechercheController::class, 'filtres']);
+Route::get('/profils/{id}', [RechercheController::class, 'show'])->whereNumber('id');
 
 // ==================== FIN RÔLE 4 ====================
 

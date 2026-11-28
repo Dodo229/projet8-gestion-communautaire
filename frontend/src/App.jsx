@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-// FOURNI PAR LE MEMBRE 1 : liste des pages et de leurs adresses (version réduite au prototype).
-import { Navigate, Route, Routes } from 'react-router-dom'
-import Layout from './components/Layout'
-import Annuaire from './pages/Annuaire'
-import ProfilDetail from './pages/ProfilDetail'
-import Connexion from './pages/Connexion'
-import NonTrouve from './pages/NonTrouve'
-
-export default function App() {
-  return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route index element={<Navigate to="/annuaire" replace />} />
-        {/* VOS DEUX PAGES (membre 4) */}
-        <Route path="annuaire" element={<Annuaire />} />
-        <Route path="profils/:id" element={<ProfilDetail />} />
-        {/* Fournie par le membre 2 */}
-        <Route path="connexion" element={<Connexion />} />
-        <Route path="*" element={<NonTrouve />} />
-      </Route>
-    </Routes>
-  )
-}
-=======
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import PiedDePage from './components/PiedDePage';
@@ -35,6 +10,8 @@ import Introuvable from './pages/Introuvable';
 import MonProfil from './pages/MonProfil';
 import AdminProfils from './pages/admin/AdminProfils';
 // Rôle 4 — Jean-Pierre
+import Recherche from './pages/recherche/Recherche';
+import ProfilDetail from './pages/recherche/ProfilDetail';
 // Rôle 5 — Mia
 // Rôle 6 — Casimir
 // Rôle 7 — Vernon
@@ -54,7 +31,8 @@ export default function App() {
           <Route path="/admin/profils" element={<AdminProfils />} />
 
           {/* ===== RÔLE 4 — Jean-Pierre : /recherche, /profils/:id ===== */}
-          <Route path="/recherche" element={<EnConstruction titre="Recherche" />} />
+          <Route path="/recherche" element={<Recherche />} />
+          <Route path="/profils/:id" element={<ProfilDetail />} />
 
           {/* ===== RÔLE 5 — Mia : /, /annuaire, /admin/categories ===== */}
           <Route path="/" element={<EnConstruction titre="Accueil" />} />
@@ -76,4 +54,3 @@ export default function App() {
     </BrowserRouter>
   );
 }
->>>>>>> 6edec79cbe3b77e687be5ee62b629e258bec25c4
